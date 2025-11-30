@@ -1,0 +1,1 @@
+This is the first real Javascript project starting from scratch. Steep learning curve and a lot of Google/going back to old material in the JS course. Looks like a neat start, but still some improvements to do and code to make prettier. I'm proud!
