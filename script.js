@@ -1,21 +1,11 @@
-/* Step 1 - build a new function named getComputerChoice. Write the code so that
-the getComputerChoice will randomly return one of the following string values:
-"Rock", "Paper", Scissors.*/
-
 //Computer input
 
 function getComputerChoice() {
     const choices = ["Rock", "Paper", "Scissors"];
     const randomIndex = Math.floor(Math.random() * 3);
     const choice = choices[randomIndex];
-    console.log(`Computer chose ${choice}`);
     return choice;
 }
-
-
-/* Step 2 - create a new function named getHumanChoice. Write the code so that
-getHumanChoice will return one of the valid choices depending on what the user
-inputs*/
 
 //User input
 
@@ -26,29 +16,25 @@ function getHumanChoice() {
     if ((input === "Rock") || 
         (input === "Paper") || 
         (input === "Scissors")) {
-        console.log(`You chose ${input}`);
         return input;
     }
     else {
-        console.log(`You picked the wrong thing!`);
+        console.log(`You picked the wrong thing! Pick between Rock, Paper or Scissors`);
     }
 }
-
-/* Step 3 - the game will keep track of the players score. Rrite variables 
-to keep track of the players score. Variable names humanScore and computerScore */
 
 //Set score variables
 
 let humanScore = 0
 let computerScore = 0
 
-/* Step 4 - write a function that takes the human and computer choices as arguments,
-play a single round and declare the winner. Increment the winners score by 1. Function
-playRound, */
+//Initiate the playround function for the first round
 
-//Initiate the playround
+function playRound(humanChoice, computerChoice, round) {
+    console.log(`\n--- Round ${round} ---`);
+    console.log(`You chose ${humanChoice}`);
+    console.log(`Computer chose ${computerChoice}`);
 
-function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
         console.log (`It's a tie! You both chose ${humanChoice}`);
         return;
@@ -61,12 +47,34 @@ function playRound(humanChoice, computerChoice) {
             console.log(`You win! ${humanChoice} beats ${computerChoice}!`);
     } else {
             computerScore ++;
-            console.log (`You lose! ${humanChoice} beats ${computerChoice}!`);
+            console.log (`You lose! ${computerChoice} beats ${humanChoice}!`);
     }
+
+    console.log(`The score is - Human: ${humanScore}, Computer: ${computerScore}`);
 }
 
-const humanChoice = getHumanChoice();
-const computerChoice = getComputerChoice();
+//Initiate the game-play with a total of 5 rounds
 
-playRound(humanChoice, computerChoice);
-console.log(`Human: ${humanScore}, Computer: ${computerScore}`);
+function playGame() {
+    humanScore = 0;
+    computerScore = 0;
+
+    for (let round = 1; round <= 5; round ++) {
+        const humanChoice = getHumanChoice();
+        const computerChoice = getComputerChoice();
+        playRound(humanChoice, computerChoice, round);
+    }
+    
+    console.log(`\n === Final Result ===`);
+    if (humanScore > computerScore) {
+        console.log(`You win! Final score - Human: ${humanScore}, Computer: ${computerScore}`)
+    } else if (humanScore < computerScore) {
+        console.log(`You lose! Final score - Human: ${humanScore}, Computer: ${computerScore}`)
+    } else {
+        console.log(`It's a tie! Final score - Human: ${humanScore}, Computer: ${computerScore}`)
+    }
+
+}
+
+//Start the game!
+playGame();
