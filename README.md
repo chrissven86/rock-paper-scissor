@@ -1,1 +1,3 @@
 This is the first real Javascript project starting from scratch. Steep learning curve and a lot of Google/going back to old material in the JS course. Looks like a neat start, but still some improvements to do and code to make prettier. I'm proud!
+
+2025-12-15 - New commit with added UI for the game. Previous version was only through the developer console, this now has a interface. Nothing fancy, but it works. More updates to come!
